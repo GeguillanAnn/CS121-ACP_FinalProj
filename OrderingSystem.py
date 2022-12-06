@@ -92,3 +92,80 @@ class File(MainMenu):
                 self.priceService.append(row[1])
             # display table of services available using tabulate
             print(tabulate(self.service, headers=File.headerService, tablefmt="pretty", showindex=rowID))
+
+# Order Menu Class
+class OrderMenu(MainMenu):
+    totalPrice = []; date = []
+    # Method to display order menu
+    def displayOrderMenu(self): 
+        while True:
+            time.sleep(1)
+            os.system("cls")
+            print("*" * 30 + "ORDER PAGE" + "*" * 30 + "\n"
+                    "\t(F) FOOD\n"
+                    "\t(D) DRINKS\n"
+                    "\t(S) SERVICES\n"
+                    "\t(B) BACK TO MAIN MENU\n"
+                    "\t(E) EXIT\n" + 
+                    "_" * 70)
+            input_1 = str(input("Select Your Choice: ")).upper()
+            if input_1 in ['F', 'D' ,'S', 'B', 'E']:
+                os.system("cls")
+                if   input_1 == 'F':
+                    File.Food(self) # order food
+                    OrderMenu.ProcessOrder(self, input_1)
+                elif input_1 == 'D':
+                    File.Drink(self) # order drink
+                    OrderMenu.ProcessOrder(self, input_1)                
+                elif input_1 == 'S':
+                    File.Service(self) # order other services
+                    OrderMenu.ProcessOrder(self, input_1)                
+                elif input_1 == 'B': # back to main menu
+                    MainMenu.displayMainMenu(self) 
+                    break
+                elif input_1 == 'E': # exit program
+                    Exit.ExitProgram()
+            else:
+                print(f"\nERROR: INVALID INPUT({str(input_1)}). Try again!")
+                
+    def ProcessOrder(self, _input_):
+        while True:
+            OrderMenu.date.extend([str(datetime.datetime.now())[:10]])
+            input_1 = int(input("Please Select Your Order: ")) # Prompt and get order
+            if _input_ == 'F':
+                quantity = str(input("Quantity: "))
+                if input_1 >= 1 and input_1 <= len(self.food):
+                    self.food[input_1-1].extend(quantity)
+                    self.order.append(self.food[input_1-1])
+                    Payment.totalPrice += float(self.priceFood[input_1-1])
+                    OrderMenu.totalPrice.extend([float(self.priceFood[input_1-1]) * float(quantity)])
+                else:
+                    print(f"\nERROR: INVALID ORDER({str(input_1)}). Try again!")
+            elif _input_ == 'D':
+                quantity = str(input("Quantity: "))
+                if input_1 >= 1 and input_1 <= len(self.drink):
+                    self.drink[input_1-1].extend(quantity)
+                    self.order.append(self.drink[input_1-1])
+                    Payment.totalPrice += float(self.priceDrink[input_1-1])
+                    OrderMenu.totalPrice.extend([float(self.priceDrink[input_1-1]) * float(quantity)])
+                else:
+                    print(f"\nERROR: INVALID ORDER({str(input_1)}). Try again!")
+            elif _input_ == 'S':
+                quantity = '0'
+                if input_1 >= 1 and input_1 <= len(self.service):
+                    self.service[input_1-1].extend(quantity)
+                    self.order.append(self.service[input_1-1])
+                    Payment.totalPrice += float(self.priceService[input_1-1])
+                    OrderMenu.totalPrice.extend([float(self.priceService[input_1-1]) * float(quantity)])
+                else:
+                    print(f"\nERROR: INVALID ORDER({str(input_1)}). Try again!")
+            else:
+                print(f"\nERROR: INVALID INPUT({str(input_1)}). Try again!")
+            
+            endLoop = str(input("Do you want to add anything else (y/n)? ")).upper()
+            if endLoop == 'Y':
+                print()
+                continue
+            elif endLoop == 'N':
+                print("********Successfully Ordered!********")
+                break
