@@ -238,3 +238,45 @@ class Payment(MainMenu):
                     Exit.ExitProgram()
             else:
                 print(f"\nERROR: INVALID INPUT({str(input_1)}). Try again!") # error checking
+              
+class Seller():
+    def displaySales():
+        os.system('cls')
+        print("*" * 30 + "SALES REPORT" + "*" * 30 + "\n")
+        rowID = []; counter = 0; data = []; headers = ["Date","Item","Price(PHP)","Quantity","Total Price"]
+        with open(r"C:\Users\Lenovo iya\Desktop\OS\files\listReport.csv", mode='r') as fileSales:
+            csv_reader = csv.reader(fileSales, delimiter=',')
+            next(csv_reader, None) # ignore first row of files
+            for row in csv_reader:
+                counter += 1; rowID.append(counter)
+                data.append(row)
+            # display table of drinks available using tabulate
+            print(tabulate(data, headers=headers, tablefmt="pretty", showindex=rowID))
+                    
+class Exit():
+    def ExitProgram():
+        print("*" * 32 + "THANK YOU" + "*" * 31 + "\n")
+        sys.exit()
+listFood    = []; listPriceFood     = []
+listDrink   = []; listPriceDrink    = []
+listService = []; listPriceService  = []
+listOrder   = []
+mainMenu = MainMenu(listFood, listDrink, listService, listPriceFood, listPriceDrink, listPriceService, listOrder)
+
+while True:
+    os.system('cls')
+    # Display operation
+    print("*" * 30 + "FOOD ORDERING SYSTEM IN PYTHON" + "*" * 30 + "\n"
+        "\t(S) SELLER\n",
+        "\t(B) BUYER\n",
+        "_" * 70)
+    input_1 = str(input("Select Your Choice: ")).upper() # prompt next operation
+    if input_1 == 'S':
+        Seller.displaySales() # navigate to order page
+        break
+    elif input_1 == 'B':
+        mainMenu.displayMainMenu() # display report of sales
+        break
+    else:
+        print(f"\nERROR: INVALID INPUT({str(input_1)}). Try again!") # error checking
+
