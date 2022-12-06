@@ -169,3 +169,72 @@ class OrderMenu(MainMenu):
             elif endLoop == 'N':
                 print("********Successfully Ordered!********")
                 break
+
+class Report(MainMenu):
+    headerReport   = ["Order", "Price (PHP)", "Quantity"]
+    data = []
+    def SaveReport(self):
+        with open(r"C:\Users\Lenovo iya\Desktop\OS\filesreport.fsd", mode='a') as fileReport:
+            fileReport.write(f"\nDATE: {str(datetime.datetime.now())[:19]} Total: PHP {Payment.totalPrice}\n")
+            fileReport.write(tabulate(self.order, headers=Report.headerReport, tablefmt="psql", stralign='center'))
+            fileReport.write("\n")
+            
+    def DisplayReport(self):
+        print("*" * 33 + "REPORT" + "*" * 33 + "\n")
+        print(tabulate(self.order, headers=Report.headerReport, tablefmt="psql", stralign='center'))
+        print("\n (M) MAIN MENU           (O) ORDER          (P) PAYMENT          (E) EXIT\n" + "_" * 72)
+        while True:
+            input_2 = str(input("Please Select Your Operation: ")).upper()
+            if input_2 in ['O', 'M', 'P', 'E']:
+                os.system('cls')
+                if (input_2 == 'O'):
+                    OrderMenu.displayOrderMenu(self) # navigate to order page
+                    break
+                elif (input_2 == 'M'):
+                    MainMenu.displayMainMenu(self) #Navigate back to the main menu
+                    break
+                elif (input_2 == 'P'):
+                    Payment.displayPayment(self) # Navigate to the payment form
+                    break
+                elif (input_2 == 'E'):
+                    Exit.ExitProgram() # exits program
+            else:
+                print(f"\nERROR: INVALID INPUT({str(input_2)}). Try again!") # error checking
+                
+    def Save(self):
+        for i in range(0, len(self.order)):
+            Report.data.extend([OrderMenu.date[i]])
+            Report.data.extend(self.order[i])
+            Report.data.extend([OrderMenu.totalPrice[i]])
+            with open(r"C:\Users\Lenovo iya\Desktop\OS\files\listReport.csv", mode='a', newline='') as fileReport:
+                writer = csv.writer(fileReport)
+                writer.writerow(Report.data)
+            Report.data.clear()
+    
+class Payment(MainMenu):
+    totalPrice = 0
+    def displayPayment(self):
+        print("*" * 32 + "PAYMENT" + "*" * 33 + "\n")
+        print(f"Total Price: PHP{Payment.totalPrice}")
+        Payment.ProcessPayment(self)
+    
+    def ProcessPayment(self):
+        print("\n (P) PAY           (M) MAIN MENU           (R) RESIT          (E) EXIT\n" + "_" * 72)
+        input_1 = str(input("Please Select Your Operation: ")).upper()
+        while True:
+            if input_1 in ['P', 'M', 'R', 'E']:
+                os.system('cls')
+                if (input_1 == 'P'):
+                    print("Successfully Paid!")
+                    Report.SaveReport(self)
+                    print(tabulate(self.order, headers=Report.headerReport, tablefmt="psql", stralign='center'))
+                    Report.Save(self)
+                    break
+                elif (input_1 == 'M'):
+                    MainMenu.displayMainMenu(self) #Navigate back to the main menu
+                elif (input_1 == 'R'):
+                    Report.DisplayReport() # Navigate to the reports
+                elif (input_1 == 'E'):
+                    Exit.ExitProgram()
+            else:
+                print(f"\nERROR: INVALID INPUT({str(input_1)}). Try again!") # error checking
