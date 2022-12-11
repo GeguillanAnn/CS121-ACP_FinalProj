@@ -32,20 +32,21 @@ class MainMenu():
             if input_1 in ['O', 'R', 'P', 'E']:
                 time.sleep(1) # sleep 1 second
                 os.system("cls")
-                if input_1 == 'O':
-                    OrderMenu.displayOrderMenu(self) # navigate to order page
-                    break
-                elif input_1 == 'R':
-                    Report.DisplayReport(self) # display report of sales
-                    break
-                elif input_1 == 'P':
-                    Payment.displayPayment(self) # payment form
-                    break
-                elif input_1 == 'E':
-                    Exit.ExitProgram() # end program
-            else:
-                print(f"\nERROR: INVALID INPUT({str(input_1)}). Try again!") # error checking
-                time.sleep(1)
+                try:
+                    if input_1 == 'O':
+                       OrderMenu.displayOrderMenu(self) # navigate to order page
+                       break
+                    elif input_1 == 'R':
+                        Report.displayReport(self) # display report of sales
+                        break
+                    elif input_1 == 'P':
+                        Payment.displayPayment(self) # payment form
+                        break
+                    elif input_1 == 'E':
+                        Exit.ExitProgram() # end program
+                except:
+                    print("\nERROR: INVALID INPUT") # error checking
+                    time.sleep(1)
                 
                 # File Reader class          
 class File(MainMenu):
@@ -55,9 +56,9 @@ class File(MainMenu):
     headerService   = ["Service", "Price"]
     
     # Read and display foods available from file
-    def Food(self):
+    def food(self):
         rowID = []; counter = 0
-        with open(r"C:\Users\Lenovo iya\Desktop\OS\files\listFoods.csv", mode='r') as fileFoods:
+        with open(r"C:\Users\PISONET\Desktop\Final Proj\files\listFoods.csv", mode='r') as fileFoods:
             csv_reader = csv.reader(fileFoods, delimiter=',')
             next(csv_reader, None) # ignore first row of files
             for row in csv_reader:
@@ -68,9 +69,9 @@ class File(MainMenu):
             print(tabulate(self.food, headers=File.headerFood, tablefmt="pretty", showindex=rowID))
     
     # Read and display drinks available from file
-    def Drink(self):
+    def drink(self):
         rowID = []; counter = 0
-        with open(r"C:\Users\Lenovo iya\Desktop\OS\files\listDrinks.csv", mode='r') as fileDrinks:
+        with open(r"C:\Users\PISONET\Desktop\Final Proj\files\listDrinks.csv", mode='r') as fileDrinks:
             csv_reader = csv.reader(fileDrinks, delimiter=',')
             next(csv_reader, None) # ignore first row of files
             for row in csv_reader:
@@ -81,9 +82,9 @@ class File(MainMenu):
             print(tabulate(self.drink, headers=File.headerDrink, tablefmt="pretty", showindex=rowID))
     
     # Read and display services available from file
-    def Service(self):
+    def service(self):
         rowID = []; counter = 0
-        with open(r"C:\Users\Lenovo iya\Desktop\OS\files\listServices.csv", mode='r') as fileServices:
+        with open(r"C:\Users\PISONET\Desktop\Final Proj\files\listServices.csv", mode='r') as fileServices:
             csv_reader = csv.reader(fileServices, delimiter=',')
             next(csv_reader, None) # ignore first row of files
             for row in csv_reader:
@@ -112,14 +113,14 @@ class OrderMenu(MainMenu):
             if input_1 in ['F', 'D' ,'S', 'B', 'E']:
                 os.system("cls")
                 if   input_1 == 'F':
-                    File.Food(self) # order food
-                    OrderMenu.ProcessOrder(self, input_1)
+                    File.food(self) # order food
+                    OrderMenu.processOrder(self, input_1)
                 elif input_1 == 'D':
-                    File.Drink(self) # order drink
-                    OrderMenu.ProcessOrder(self, input_1)                
+                    File.drink(self) # order drink
+                    OrderMenu.processOrder(self, input_1)                
                 elif input_1 == 'S':
-                    File.Service(self) # order other services
-                    OrderMenu.ProcessOrder(self, input_1)                
+                    File.service(self) # order other services
+                    OrderMenu.processOrder(self, input_1)                
                 elif input_1 == 'B': # back to main menu
                     MainMenu.displayMainMenu(self) 
                     break
@@ -128,7 +129,7 @@ class OrderMenu(MainMenu):
             else:
                 print(f"\nERROR: INVALID INPUT({str(input_1)}). Try again!")
                 
-    def ProcessOrder(self, _input_):
+    def processOrder(self, _input_):
         while True:
             OrderMenu.date.extend([str(datetime.datetime.now())[:10]])
             input_1 = int(input("Please Select Your Order: ")) # Prompt and get order
@@ -173,13 +174,13 @@ class OrderMenu(MainMenu):
 class Report(MainMenu):
     headerReport   = ["Order", "Price (PHP)", "Quantity"]
     data = []
-    def SaveReport(self):
-        with open(r"C:\Users\Lenovo iya\Desktop\OS\filesreport.fsd", mode='a') as fileReport:
+    def saveReport(self):
+        with open(r"C:\Users\PISONET\Desktop\Final Proj\files\filesreport.fsd", mode='a') as fileReport:
             fileReport.write(f"\nDATE: {str(datetime.datetime.now())[:19]} Total: PHP {Payment.totalPrice}\n")
             fileReport.write(tabulate(self.order, headers=Report.headerReport, tablefmt="psql", stralign='center'))
             fileReport.write("\n")
             
-    def DisplayReport(self):
+    def displayReport(self):
         print("*" * 33 + "REPORT" + "*" * 33 + "\n")
         print(tabulate(self.order, headers=Report.headerReport, tablefmt="psql", stralign='center'))
         print("\n (M) MAIN MENU           (O) ORDER          (P) PAYMENT          (E) EXIT\n" + "_" * 72)
@@ -201,12 +202,12 @@ class Report(MainMenu):
             else:
                 print(f"\nERROR: INVALID INPUT({str(input_2)}). Try again!") # error checking
                 
-    def Save(self):
+    def save(self):
         for i in range(0, len(self.order)):
             Report.data.extend([OrderMenu.date[i]])
             Report.data.extend(self.order[i])
             Report.data.extend([OrderMenu.totalPrice[i]])
-            with open(r"C:\Users\Lenovo iya\Desktop\OS\files\listReport.csv", mode='a', newline='') as fileReport:
+            with open(r"C:\Users\PISONET\Desktop\Final Proj\files\listReport.csv", mode='a', newline='') as fileReport:
                 writer = csv.writer(fileReport)
                 writer.writerow(Report.data)
             Report.data.clear()
@@ -216,19 +217,19 @@ class Payment(MainMenu):
     def displayPayment(self):
         print("*" * 32 + "PAYMENT" + "*" * 33 + "\n")
         print(f"Total Price: PHP{Payment.totalPrice}")
-        Payment.ProcessPayment(self)
+        Payment.processPayment(self)
     
-    def ProcessPayment(self):
-        print("\n (P) PAY           (M) MAIN MENU           (R) RESIT          (E) EXIT\n" + "_" * 72)
+    def processPayment(self):
+        print("\n (P) PAY           (M) MAIN MENU           (R) RECIEPT          (E) EXIT\n" + "_" * 72)
         input_1 = str(input("Please Select Your Operation: ")).upper()
         while True:
             if input_1 in ['P', 'M', 'R', 'E']:
                 os.system('cls')
                 if (input_1 == 'P'):
                     print("Successfully Paid!")
-                    Report.SaveReport(self)
+                    Report.saveReport(self)
                     print(tabulate(self.order, headers=Report.headerReport, tablefmt="psql", stralign='center'))
-                    Report.Save(self)
+                    Report.save(self)
                     break
                 elif (input_1 == 'M'):
                     MainMenu.displayMainMenu(self) #Navigate back to the main menu
@@ -244,7 +245,7 @@ class Seller():
         os.system('cls')
         print("*" * 30 + "SALES REPORT" + "*" * 30 + "\n")
         rowID = []; counter = 0; data = []; headers = ["Date","Item","Price(PHP)","Quantity","Total Price"]
-        with open(r"C:\Users\Lenovo iya\Desktop\OS\files\listReport.csv", mode='r') as fileSales:
+        with open(r"C:\Users\PISONET\Desktop\Final Proj\files\listReport.csv", mode='r') as fileSales:
             csv_reader = csv.reader(fileSales, delimiter=',')
             next(csv_reader, None) # ignore first row of files
             for row in csv_reader:
@@ -279,4 +280,3 @@ while True:
         break
     else:
         print(f"\nERROR: INVALID INPUT({str(input_1)}). Try again!") # error checking
-
