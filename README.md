@@ -1,8 +1,9 @@
-# ORDERING SYSTEM
-Ordering System is a Phyton System that deals with the menu and payment orders. It aims to help the user to manage their orders and payment easily. The highlight of this system is the convenience for them to order. 
+# ORDERING SYSTEM 
+
+This system allows restaurants to complete all tasks more quickly and accurately. It aims to help in keeping daily records and payments for food orders.
 
 ## FEATURES
-    - Ordering
+    - Ordering Food
     - Payment
     - Sales Report 
-  
+    
