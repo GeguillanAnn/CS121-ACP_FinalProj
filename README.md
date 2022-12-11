@@ -1,18 +1,14 @@
-#  Food Ordering System
 
- Food Ordering System is a System that deals with the menu and payment orders. It aims to help the user to manage their orders and payment easily. The highlight of this system is the convenience for them to order.
+# Ordering System
+
+Ordering System is a Phyton System that deals with the menu and payment orders. It aims to help the user to manage their orders and payment easily. The highlight of this system is the convenience for them to order.
 
 ## FEATURES
-
     - Ordering
-
-    - Payments
-
+    - Payment
     - Sales Report 
-
 ## 🔗 Links
-
-YouTube - (https://www.youtube.com/@food_hq)
+[![YouTube](https://m.youtube.com/style=for-the-badge&logo=ko-fi&logoColor=white)](https://www.youtube.com/@food_hq)
 
 ## Authors
 
@@ -23,3 +19,28 @@ YouTube - (https://www.youtube.com/@food_hq)
 - [Andal, Angel Faye] (https://github.com/AndalAngelFaye )
 
 - [Calahati, Jimmy Jr.] (https://github.com/Jimmycalahati ) 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
