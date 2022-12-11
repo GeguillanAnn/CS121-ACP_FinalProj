@@ -12,7 +12,7 @@
 
 ## 🔗 Links
 
-[![YouTube](https://m.youtube.com/style=for-the-badge&logo=ko-fi&logoColor=white)](https://katherineoelsner.com/)
+[[![YouTube](https://m.youtube.com/style=for-the-badge&logo=ko-fi&logoColor=white)](https://katherineoelsner.com/)](https://www.youtube.com/@food_hq)
 
 ## Authors
 
