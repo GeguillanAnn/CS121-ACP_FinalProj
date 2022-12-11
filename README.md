@@ -6,7 +6,7 @@
 
     - Ordering
 
-    - Payment
+    - Payments
 
     - Sales Report 
 
