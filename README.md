@@ -7,6 +7,11 @@ Food Ordering System is a system that deals with the menu and payment orders. It
     - Ordering
     - Payment
     - Sales Report 
+    
+# **UML (Unified Model Language)**
+
+![alt text](UriUML.png "UML")
+
 ## 🔗 Links
 [![YouTube](https://m.youtube.com/style=for-the-badge&logo=ko-fi&logoColor=white)](https://www.youtube.com/@food_hq)
 
