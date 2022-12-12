@@ -74,6 +74,19 @@ https://www.youtube.com/@luffysOS
 
 - ⚡ Fun fact: **I think I'm funny**
 
+
+<h1 align="center">Hello, I'm Joshua Dominic M. Arabe</h1>
+<h3 align="center">BSU 2nd Year BSIT Student</h3>
+<img align="right" alt "Coding" width="400" scr="
+
+<p align="left"> <img src="https://komarev.com/ghpvc/?username=joshuadominic&label=Profile%20views&color=0e75b6&style=flat" alt="joshuadominic" /> </p>
+
+- 🌱 I’m currently learning **Object-Oriented Programming**
+
+- 📫 You can reach me through my gsuite **21-01687@g.batstate-u.edu.ph** 
+
+- ⚡ **Still Learning**
+
 <h3 align="left">Languages and Tools:</h3>
 <p align="left"> <a href="https://www.w3schools.com/cpp/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/cplusplus/cplusplus-original.svg" alt="cplusplus" width="40" height="40"/> </a> <a href="https://www.java.com" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg" alt="java" width="40" height="40"/> </a> <a href="https://www.python.org" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg" alt="python" width="40" height="40"/> </a> </p>
 
