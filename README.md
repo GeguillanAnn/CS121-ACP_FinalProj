@@ -85,13 +85,6 @@ https://www.youtube.com/@luffysOS
 
 
 
-- [Arabe, Joshua Dominic] (https://github.com/ArabeJoshuaDominic ) 
-
-- [Andal, Angel Faye] (https://github.com/AndalAngelFaye )
-
-- [Calahati, Jimmy Jr.] (https://github.com/Jimmycalahati ) 
-
-
 
 
 
