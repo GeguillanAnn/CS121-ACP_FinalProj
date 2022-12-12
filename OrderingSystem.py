@@ -50,7 +50,8 @@ class MainMenu():
                 
                 # File Reader class          
 class File(MainMenu):
-    # Headers fields: for table header
+    # Headers fields: for table headers
+
     headerFood      = ["Food", "Price"]
     headerDrink     = ["Drink", "Price"]
     headerService   = ["Service", "Price"]
@@ -58,7 +59,7 @@ class File(MainMenu):
     # Read and display foods available from file
     def food(self):
         rowID = []; counter = 0
-        with open(r"C:\Users\PISONET\Desktop\Final Proj\files\listFoods.csv", mode='r') as fileFoods:
+        with open(r"C:\Users\DICT\Desktop\CS121-ACP_FinalProj-main\files\listFoods.csv", mode='r') as fileFoods:
             csv_reader = csv.reader(fileFoods, delimiter=',')
             next(csv_reader, None) # ignore first row of files
             for row in csv_reader:
@@ -71,7 +72,7 @@ class File(MainMenu):
     # Read and display drinks available from file
     def drink(self):
         rowID = []; counter = 0
-        with open(r"C:\Users\PISONET\Desktop\Final Proj\files\listDrinks.csv", mode='r') as fileDrinks:
+        with open(r"C:\Users\DICT\Desktop\CS121-ACP_FinalProj-main\files\listDrinks.csv", mode='r') as fileDrinks:
             csv_reader = csv.reader(fileDrinks, delimiter=',')
             next(csv_reader, None) # ignore first row of files
             for row in csv_reader:
@@ -84,7 +85,7 @@ class File(MainMenu):
     # Read and display services available from file
     def service(self):
         rowID = []; counter = 0
-        with open(r"C:\Users\PISONET\Desktop\Final Proj\files\listServices.csv", mode='r') as fileServices:
+        with open(r"C:\Users\DICT\Desktop\CS121-ACP_FinalProj-main\files\listServices.csv", mode='r') as fileServices:
             csv_reader = csv.reader(fileServices, delimiter=',')
             next(csv_reader, None) # ignore first row of files
             for row in csv_reader:
@@ -175,7 +176,7 @@ class Report(MainMenu):
     headerReport   = ["Order", "Price (PHP)", "Quantity"]
     data = []
     def saveReport(self):
-        with open(r"C:\Users\PISONET\Desktop\Final Proj\files\filesreport.fsd", mode='a') as fileReport:
+        with open(r"C:\Users\DICT\Desktop\CS121-ACP_FinalProj-main\files\filesreport.fsd", mode='a') as fileReport:
             fileReport.write(f"\nDATE: {str(datetime.datetime.now())[:19]} Total: PHP {Payment.totalPrice}\n")
             fileReport.write(tabulate(self.order, headers=Report.headerReport, tablefmt="psql", stralign='center'))
             fileReport.write("\n")
@@ -207,7 +208,7 @@ class Report(MainMenu):
             Report.data.extend([OrderMenu.date[i]])
             Report.data.extend(self.order[i])
             Report.data.extend([OrderMenu.totalPrice[i]])
-            with open(r"C:\Users\PISONET\Desktop\Final Proj\files\listReport.csv", mode='a', newline='') as fileReport:
+            with open(r"C:\Users\DICT\Desktop\CS121-ACP_FinalProj-main\files\listReport.csv", mode='a', newline='') as fileReport:
                 writer = csv.writer(fileReport)
                 writer.writerow(Report.data)
             Report.data.clear()
@@ -245,7 +246,7 @@ class Seller():
         os.system('cls')
         print("*" * 30 + "SALES REPORT" + "*" * 30 + "\n")
         rowID = []; counter = 0; data = []; headers = ["Date","Item","Price(PHP)","Quantity","Total Price"]
-        with open(r"C:\Users\PISONET\Desktop\Final Proj\files\listReport.csv", mode='r') as fileSales:
+        with open(r"C:\Users\DICT\Desktop\CS121-ACP_FinalProj-main\files\listReport.csv", mode='r') as fileSales:
             csv_reader = csv.reader(fileSales, delimiter=',')
             next(csv_reader, None) # ignore first row of files
             for row in csv_reader:
