@@ -11,6 +11,18 @@
 
 ![alt text](UML.png "UML")
 
+# **Self Assesment**
+
+| Metric                     |       Score        | Explanation                                                                |
+|--------------------------  | ------------------ | ---------------------------------------------------------------------------|
+| CODE REUSABILITY           | 2                  | A Bit of DRY method exists but still inhibits several repeats.             |
+| MAINTABILITY               | 3                  | The program's structure is based on OOP principles. Codes are readable, understandable,aiding to its maintainability                      |
+| SCALABILITY                | 3                  | THe program can be easilt updated in case feature add=ons and immediate tweaks.          |
+| EXECUTION                  | 3                  | The program works completely as intended and declared. Errors are handled properly. |
+| ORIGINALITY                | 3                  | Concept is quite similar to some samples |
+| OVERALL IMPRESSION         | 4                  | Minimal to no bugs or errors found during presentation. The overall quality and creativity are good |
+
+
 ## 🔗 Links
 https://www.youtube.com/@luffysOS
 
